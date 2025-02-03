@@ -125,7 +125,7 @@ function WelcomePage() {
                 fontFamily: "'Playfair Display', serif",
               }}
             >
-              Valentine Love Cart
+              Golu-tine Please be mine 🙌🏻❤️
             </Typography>
           </motion.div>
 
@@ -140,7 +140,7 @@ function WelcomePage() {
                 fontFamily: "'Montserrat', sans-serif",
               }}
             >
-              A magical journey of love awaits you...
+              Hi! Welcome to Maha-Pandit's Land!...
             </Typography>
           </motion.div>
 
@@ -184,7 +184,7 @@ function WelcomePage() {
                 },
               }}
             >
-              Begin Our Journey
+              Begin Valentine Journey
             </Button>
           </motion.div>
 

@@ -165,7 +165,28 @@ function GiftShopPage() {
             Couple's Quiz
           </Button>
         </Box>
-
+        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, marginBottom: 4 }}>
+            <Button
+              variant="contained"
+              onClick={() => navigate('/future-plans')}
+              sx={{
+                borderRadius: '25px',
+                background: 'linear-gradient(45deg, #FF1493 30%, #FF69B4 90%)',
+              }}
+            >
+              Our Future Plans
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => navigate('/love-notes')}
+              sx={{
+                borderRadius: '25px',
+                background: 'linear-gradient(45deg, #FF1493 30%, #FF69B4 90%)',
+              }}
+            >
+              Love Notes
+            </Button>
+          </Box>
         <Grid container spacing={3} sx={{ maxWidth: '1200px', margin: '0 auto' }}>
           {gifts.map((gift) => (
             <Grid item xs={12} sm={6} md={4} key={gift.id}>

@@ -10,6 +10,8 @@ import GiftShopPage from './pages/GiftShopPage';
 import { GameProvider } from './context/GameContext';
 import TimelinePage from './pages/TimelinePage';
 import QuizPage from './pages/QuizPage';
+import FuturePlansPage from './pages/FuturePlansPage';
+import LoveNotesPage from './pages/LoveNotesPage';
 
 const theme = createTheme({
   palette: {
@@ -37,6 +39,8 @@ function App() {
               <Route path="/shop" element={<GiftShopPage />} />
               <Route path="/timeline" element={<TimelinePage />} />
               <Route path="/quiz" element={<QuizPage />} />
+              <Route path="/future-plans" element={<FuturePlansPage />} />
+              <Route path="/love-notes" element={<LoveNotesPage />} />
             </Routes>
           </AnimatePresence>
         </BrowserRouter>

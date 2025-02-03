@@ -7,17 +7,17 @@ import { useNavigate } from 'react-router-dom';
 
 const memories = [
   {
-    date: 'First Meeting',
-    description: 'The day we first met',
+    date: 'Parents Meeting',
+    description: 'The day you met my parents',
     image: '/timeline/firstmeet.jpeg'
   },
   {
-    date: 'First Date',
-    description: 'Our magical first date',
+    date: 'First Aankh ladana',
+    description: 'Our magical date',
     image: '/timeline/firstdate.jpeg'
   },
   {
-    date: 'First Kiss',
+    date: 'Singapore bliss',
     description: 'A moment to remember',
     image: '/timeline/firstkiss.jpeg'
   },
