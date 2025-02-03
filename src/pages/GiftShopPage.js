@@ -1,5 +1,6 @@
 // src/pages/GiftShopPage.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Box, 
   Grid, 
@@ -48,6 +49,7 @@ const gifts = [
 ];
 
 function GiftShopPage() {
+  const navigate = useNavigate();
   const [cartOpen, setCartOpen] = useState(false);
   const { cart, addToCart } = useGame();
 
@@ -110,18 +112,59 @@ function GiftShopPage() {
         animate="visible"
         variants={containerVariants}
       >
-        <Typography
+      <Typography
           variant="h3"
           sx={{
             textAlign: 'center',
             color: '#FF1493',
-            marginBottom: 4,
+            marginBottom: 2, // reduced from 4 to add buttons below
             fontWeight: 'bold',
             textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)'
           }}
         >
           Valentine Gift Shop
         </Typography>
+
+        {/* Add this new Box for navigation buttons */}
+        <Box 
+          sx={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            gap: 2,
+            marginBottom: 4 
+          }}
+        >
+          <Button
+            variant="contained"
+            onClick={() => navigate('/timeline')}
+            sx={{
+              borderRadius: '25px',
+              padding: '10px 20px',
+              background: 'linear-gradient(45deg, #FF1493 30%, #FF69B4 90%)',
+              boxShadow: '0 3px 5px 2px rgba(255, 105, 180, .3)',
+              '&:hover': {
+                transform: 'scale(1.05)',
+              }
+            }}
+          >
+            Our Story
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => navigate('/quiz')}
+            sx={{
+              borderRadius: '25px',
+              padding: '10px 20px',
+              background: 'linear-gradient(45deg, #FF1493 30%, #FF69B4 90%)',
+              boxShadow: '0 3px 5px 2px rgba(255, 105, 180, .3)',
+              '&:hover': {
+                transform: 'scale(1.05)',
+              }
+            }}
+          >
+            Couple's Quiz
+          </Button>
+        </Box>
 
         <Grid container spacing={3} sx={{ maxWidth: '1200px', margin: '0 auto' }}>
           {gifts.map((gift) => (

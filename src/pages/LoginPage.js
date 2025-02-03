@@ -1,16 +1,28 @@
 // src/pages/LoginPage.js
 import React, { useState } from 'react';
-import { Box, TextField, Button, Typography, Paper } from '@mui/material';
-import { motion } from 'framer-motion';
+import { Box, TextField, Button, Typography, Paper, Alert } from '@mui/material';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
   const navigate = useNavigate();
   const [code, setCode] = useState('');
+  const [attempts, setAttempts] = useState(0);
+  const [showHint, setShowHint] = useState(false);
+
+  const hints = [
+    "💝 It's all lowercase and 2 words written together",
+    "🌮 It's a Mexican word that makes me smile",
+    "💕 I love it when you say it!"
+  ];
 
   const handleLogin = () => {
-    // Add validation logic here if needed
-    navigate('/puzzle');
+    if (code.toLowerCase() === 'pocoloco') {
+      navigate('/puzzle');
+    } else {
+      setAttempts(prev => prev + 1);
+      setShowHint(true);
+    }
   };
 
   return (
@@ -49,49 +61,47 @@ function LoginPage() {
               fontWeight: 'bold',
             }}
           >
-            Enter Your Special Code
+            Enter Our Special Word
           </Typography>
-          
+
           <TextField
             fullWidth
             variant="outlined"
-            placeholder="Your secret code..."
+            placeholder="Your special word..."
             value={code}
             onChange={(e) => setCode(e.target.value)}
-            sx={{
-              marginBottom: 3,
-              '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                  borderColor: '#FF69B4',
-                },
-                '&:hover fieldset': {
-                  borderColor: '#FF1493',
-                },
-                '&.Mui-focused fieldset': {
-                  borderColor: '#FF1493',
-                },
-              },
-            }}
+            sx={{ marginBottom: 3 }}
           />
-          
+
+          <AnimatePresence>
+            {showHint && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+              >
+                <Alert 
+                  severity="info" 
+                  sx={{ marginBottom: 2 }}
+                >
+                  {hints[Math.min(attempts - 1, hints.length - 1)]}
+                </Alert>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <Button
             fullWidth
             variant="contained"
-            size="large"
             onClick={handleLogin}
             sx={{
               borderRadius: '25px',
               padding: '12px',
               background: 'linear-gradient(45deg, #FF1493 30%, #FF69B4 90%)',
               boxShadow: '0 3px 5px 2px rgba(255, 105, 180, .3)',
-              '&:hover': {
-                background: 'linear-gradient(45deg, #FF69B4 30%, #FF1493 90%)',
-                transform: 'scale(1.02)',
-                transition: 'transform 0.2s',
-              }
             }}
           >
-            Begin Our Journey
+            Enter
           </Button>
         </Paper>
       </motion.div>

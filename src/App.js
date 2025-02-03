@@ -8,6 +8,8 @@ import LoginPage from './pages/LoginPage';
 import PuzzlePage from './pages/PuzzlePage';
 import GiftShopPage from './pages/GiftShopPage';
 import { GameProvider } from './context/GameContext';
+import TimelinePage from './pages/TimelinePage';
+import QuizPage from './pages/QuizPage';
 
 const theme = createTheme({
   palette: {
@@ -20,6 +22,8 @@ const theme = createTheme({
   },
 });
 
+
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -31,6 +35,8 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/puzzle" element={<PuzzlePage />} />
               <Route path="/shop" element={<GiftShopPage />} />
+              <Route path="/timeline" element={<TimelinePage />} />
+              <Route path="/quiz" element={<QuizPage />} />
             </Routes>
           </AnimatePresence>
         </BrowserRouter>
