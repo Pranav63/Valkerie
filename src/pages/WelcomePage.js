@@ -4,6 +4,11 @@ import { Box, Typography, Button, Container } from '@mui/material';
 import { motion, useAnimation } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCube, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-cube';
+// import BackgroundMusic from '../components/BackgroundMusic';
 
 function WelcomePage() {
   const navigate = useNavigate();
@@ -36,6 +41,13 @@ function WelcomePage() {
   };
 
   const floatingHearts = Array(15).fill(null);
+  
+  const photos = [
+    '/puzzle/golu5.jpeg',
+    '/puzzle/golu6.jpeg',
+    '/puzzle/golu7.jpeg',
+    '/puzzle/golu8.jpeg',
+  ];
 
   return (
     <Box
@@ -46,6 +58,8 @@ function WelcomePage() {
         overflow: 'hidden',
       }}
     >
+      {/* <BackgroundMusic /> */}
+
       {/* Animated Background Hearts */}
       {floatingHearts.map((_, index) => (
         <motion.div
@@ -78,16 +92,17 @@ function WelcomePage() {
         </motion.div>
       ))}
 
-      {/* Main Content */}
       <Container
         maxWidth="md"
         sx={{
-          height: '100vh',
+          minHeight: '100vh',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
           position: 'relative',
           zIndex: 2,
+          gap: 4,
         }}
       >
         <motion.div
@@ -125,7 +140,7 @@ function WelcomePage() {
                 fontFamily: "'Playfair Display', serif",
               }}
             >
-              Golu-tine Please be mine 🙌🏻❤️
+              My entire world - Ms Golu G ❤️
             </Typography>
           </motion.div>
 
@@ -140,8 +155,52 @@ function WelcomePage() {
                 fontFamily: "'Montserrat', sans-serif",
               }}
             >
-              Hi! Welcome to Maha-Pandit's Land!...
+              Happy Valentine my first born!...
             </Typography>
+          </motion.div>
+
+          {/* Photo Gallery Slider */}
+          <motion.div 
+            variants={itemVariants}
+            style={{ 
+              width: '100%',
+              maxWidth: '500px',
+              margin: '0 auto',
+              marginBottom: '2rem',
+            }}
+          >
+            <Swiper
+              effect="cube"
+              grabCursor={true}
+              cubeEffect={{
+                shadow: true,
+                slideShadows: true,
+                shadowOffset: 20,
+                shadowScale: 0.94,
+              }}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              modules={[EffectCube, Autoplay]}
+              className="mySwiper"
+            >
+              {photos.map((photo, index) => (
+                <SwiperSlide key={index}>
+                  <Box
+                    component="img"
+                    src={photo}
+                    sx={{
+                      width: '100%',
+                      height: '400px',
+                      objectFit: 'cover',
+                      borderRadius: '20px',
+                      boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
+                    }}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </motion.div>
 
           <motion.div
@@ -187,30 +246,27 @@ function WelcomePage() {
               Begin Valentine Journey
             </Button>
           </motion.div>
-
-          {/* Decorative Elements */}
-          <Box
-            component={motion.div}
-            animate={{
-              scale: [1, 1.1, 1],
-              rotate: [0, 5, -5, 0],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            sx={{
-              position: 'absolute',
-              top: '10%',
-              right: '10%',
-              color: 'rgba(255,255,255,0.2)',
-            }}
-          >
-            <FavoriteIcon sx={{ fontSize: '4rem' }} />
-          </Box>
         </motion.div>
       </Container>
+
+      {/* Sparkle Effect Overlay */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          pointerEvents: 'none',
+          background: 'url(/sparkles.png)',
+          opacity: 0.5,
+          animation: 'sparkle 20s linear infinite',
+          '@keyframes sparkle': {
+            '0%': { backgroundPosition: '0 0' },
+            '100%': { backgroundPosition: '100% 100%' },
+          },
+        }}
+      />
     </Box>
   );
 }

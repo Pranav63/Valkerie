@@ -10,8 +10,7 @@ import GiftShopPage from './pages/GiftShopPage';
 import { GameProvider } from './context/GameContext';
 import TimelinePage from './pages/TimelinePage';
 import QuizPage from './pages/QuizPage';
-import FuturePlansPage from './pages/FuturePlansPage';
-import LoveNotesPage from './pages/LoveNotesPage';
+import BackgroundMusic from './components/BackgroundMusic';
 
 const theme = createTheme({
   palette: {
@@ -24,13 +23,12 @@ const theme = createTheme({
   },
 });
 
-
-
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GameProvider>
         <BrowserRouter>
+          <BackgroundMusic /> {/* Add it here so it persists across routes */}
           <AnimatePresence mode="wait">
             <Routes>
               <Route path="/" element={<WelcomePage />} />
@@ -39,8 +37,6 @@ function App() {
               <Route path="/shop" element={<GiftShopPage />} />
               <Route path="/timeline" element={<TimelinePage />} />
               <Route path="/quiz" element={<QuizPage />} />
-              <Route path="/future-plans" element={<FuturePlansPage />} />
-              <Route path="/love-notes" element={<LoveNotesPage />} />
             </Routes>
           </AnimatePresence>
         </BrowserRouter>
